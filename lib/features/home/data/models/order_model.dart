@@ -9,7 +9,7 @@ class OrderModel extends OrderEntity{
 
   OrderModel({required super.id, required super.invoiceId,
     required super.totalProduct, required super.productId,
-    required super.amount, required super.productName,
+    required super.quantity, required super.productName,
     required super.productPrice, required super.units,super.image});
 
   factory OrderModel.fromJson(DataMap json) => _$OrderModelFromJson(json);

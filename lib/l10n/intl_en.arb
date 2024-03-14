@@ -71,7 +71,13 @@
   "order_units": "Units",
   "reason": "Reason",
   "invoice_total": "Total Invoice Cost",
-
+  "invalid_quantity_title": "Invalid Quantity",
+  "invalid_quantity_sub_title": "Enter Valid Quantity",
+  "invalid_unit_title": "Invalid Unit",
+  "invalid_unit_sub_title": "Enter Valid Unit",
+  "no_return_products": "Enter Your Returned Products Amounts Or Units",
+  "no_damage_products": "Enter Your Damaged Products Amounts Or Units",
+  "reason_error": "Enter Your Reason",
 
   "profile_sign_out": "LogOut",
   "edit_profile_title":"Edit Profile",

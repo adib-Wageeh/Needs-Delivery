@@ -9,13 +9,13 @@ part of 'daily_items_statics_model.dart';
 DailyItemsStaticsModel _$DailyItemsStaticsModelFromJson(
         Map<String, dynamic> json) =>
     DailyItemsStaticsModel(
-      doneInvoices: json['doneInvoices'] as int,
-      totalInvoices: json['totalInvoices'] as int,
+      done: json['done'] as int,
+      all: json['all'] as int,
     );
 
 Map<String, dynamic> _$DailyItemsStaticsModelToJson(
         DailyItemsStaticsModel instance) =>
     <String, dynamic>{
-      'totalInvoices': instance.totalInvoices,
-      'doneInvoices': instance.doneInvoices,
+      'all': instance.all,
+      'done': instance.done,
     };

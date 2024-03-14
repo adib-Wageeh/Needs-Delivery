@@ -20,7 +20,7 @@ class DatePickerWidget extends StatelessWidget {
                 IconButton(onPressed: (){}, icon: const Icon(Icons.search_rounded),
                 style: IconButton.styleFrom(
                   backgroundColor: Colours.primaryColor,
-                  foregroundColor: Colors.black
+                  foregroundColor: Colors.white
                 ),
                 ),
                 Expanded(

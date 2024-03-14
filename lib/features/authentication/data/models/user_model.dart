@@ -11,7 +11,7 @@ class UserModel extends UserEntity{
     required super.id,super.lat,super.long,super.address,
     required super.name,super.email, required super.mobile,
     super.token,required super.lastName,super.wallet
-    ,super.location,super.merchantName,super.image});
+    ,super.location,super.image});
 
 
   factory UserModel.fromJson(DataMap json) => _$UserModelFromJson(json);
@@ -24,7 +24,6 @@ class UserModel extends UserEntity{
     int? id,
     String? name,
     String? image,
-    String? merchantName,
     String? phone,
     String? lastName,
     String? location,
@@ -41,7 +40,6 @@ class UserModel extends UserEntity{
       lat: lat ?? this.lat,
       address: address ?? this.address,
       image: image ?? this.image,
-      merchantName: merchantName ?? this.merchantName,
       email: email ?? this.email,
       name: name ?? this.name,
       mobile: phone ?? mobile,

@@ -21,6 +21,9 @@ Future<void> init() async {
 
   await _dailyItemsStaticsInit();
 
+  await _returnOrderInit();
+
+  await _damagedOrderInit();
 
 }
 
@@ -101,4 +104,14 @@ Future<void> _dailyItemsStaticsInit() async {
   ..registerLazySingleton<DailyItemsStaticsRemoteDataSource>
     (() => DailyItemsStaticsRemoteDataSourceImpl(sl()));
 
+}
+
+Future<void> _returnOrderInit() async {
+  sl.registerFactory(() => ReturnProductsCubit(
+    returnedOrderUseCase: sl(),));
+}
+
+Future<void> _damagedOrderInit() async {
+  sl.registerFactory(() => DamagedProductsCubit(
+    damagedOrderUseCase: sl(),));
 }

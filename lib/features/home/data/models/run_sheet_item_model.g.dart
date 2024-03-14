@@ -18,6 +18,7 @@ RunSheetItemModel _$RunSheetItemModelFromJson(Map<String, dynamic> json) =>
       area: json['area'] as String,
       merchantId: json['merchant_id'] as int,
       merchantImage: json['merchant_image'] as String,
+      mobile: json['mobile'] as String,
       merchantName: json['merchant_name'] as String,
       totalInvoice: (json['total_invoice'] as num).toDouble(),
     );
@@ -36,4 +37,5 @@ Map<String, dynamic> _$RunSheetItemModelToJson(RunSheetItemModel instance) =>
       'long': instance.long,
       'total_invoice': instance.totalInvoice,
       'status': instance.status,
+      'mobile': instance.mobile,
     };

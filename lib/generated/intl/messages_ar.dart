@@ -41,6 +41,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_delivery_confirmation":
             MessageLookupByLibrary.simpleMessage("هل تم توصيل هذا الطلب كليآ؟"),
         "home_welcome": MessageLookupByLibrary.simpleMessage("أهلا!"),
+        "invalid_quantity_sub_title":
+            MessageLookupByLibrary.simpleMessage("برجاء أدخال وحدات صحيحة"),
+        "invalid_quantity_title":
+            MessageLookupByLibrary.simpleMessage("وحدات غير صحيحة"),
+        "invalid_unit_sub_title":
+            MessageLookupByLibrary.simpleMessage("برجاء أدخال كمية صحيحة"),
+        "invalid_unit_title":
+            MessageLookupByLibrary.simpleMessage("كمية غير صحيحة"),
         "invoice_total":
             MessageLookupByLibrary.simpleMessage("إجمالى تكلفة الفاتورة"),
         "invoices_count":
@@ -66,8 +74,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_title": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
         "no_connection_error":
             MessageLookupByLibrary.simpleMessage("تحقق من اتصالك بالإنترنت"),
+        "no_damage_products": MessageLookupByLibrary.simpleMessage(
+            "أدخل كميات أو وحدات المنتجات التالفة"),
         "no_internet_connection":
             MessageLookupByLibrary.simpleMessage("لا يوجد أتصال بالأنترنت"),
+        "no_return_products": MessageLookupByLibrary.simpleMessage(
+            "أدخل كميات أو وحدات المنتجات المرتجعات"),
         "no_run_sheets":
             MessageLookupByLibrary.simpleMessage("لا توجد قوائم تشغيل"),
         "number_verification_confirm":
@@ -100,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "profile_sign_out":
             MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "reason": MessageLookupByLibrary.simpleMessage("السبب"),
+        "reason_error":
+            MessageLookupByLibrary.simpleMessage("برجاء أدخال السبب"),
         "refused_button": MessageLookupByLibrary.simpleMessage("مرفوض"),
         "refused_delivery_confirmation":
             MessageLookupByLibrary.simpleMessage("هل تم رفض هذا الطلب؟"),

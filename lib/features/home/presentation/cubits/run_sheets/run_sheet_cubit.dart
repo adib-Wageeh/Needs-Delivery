@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 import 'package:needs_delivery/core/errors/failure.dart';
 import 'package:needs_delivery/features/home/domain/entites/run_sheet_entity.dart';
 import 'package:needs_delivery/features/home/domain/use_cases/get_all_run_sheets_usecase.dart';
@@ -32,9 +33,11 @@ class RunSheetCubit extends Cubit<RunSheetState> {
 
   void getRunSheetsByDate({required String token,required String lang,required String date})async{
     emit(RunSheetLoading());
+    DateTime dateTime = DateFormat('yyyy-MM-dd').parse(date);
+    print(DateFormat('yyyy-MM-dd','en_US').format(dateTime));
     final result = await _getRunSheetsByDateUseCase.call(GetRunSheetsByDateParams(
         token: token,
-        date: date,
+        date: DateFormat('yyyy-MM-dd','en_US').format(dateTime),
         lang: lang));
     result.fold((l) {
       emit(RunSheetsError(error: l));

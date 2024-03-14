@@ -50,7 +50,7 @@ class OrderStatusRemoteDataSourceImpl implements OrderStatusRemoteDataSource{
           map: {
             'runsheet_item_id': invoiceId,
             'order_id': orderId,
-            'amount': amount,
+            'quantity': amount,
             'units': units,
             'reason': reason
           }

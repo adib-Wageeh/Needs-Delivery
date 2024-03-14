@@ -25,7 +25,7 @@ void main() async {
   await init();
   await Hive.initFlutter();
   await BackgroundLocator.unRegisterLocationUpdate();
-  CoreUtils.saveAuthData('q8MqcyssCBeQEWehsPDms');
+  // CoreUtils.saveAuthData('q8MqcyssCBeQEWehsPDms');
   // CoreUtils.clearAuthData();
 
   runApp(

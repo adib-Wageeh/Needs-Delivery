@@ -4,11 +4,13 @@ import 'package:background_locator_2/settings/android_settings.dart';
 import 'package:background_locator_2/settings/ios_settings.dart';
 import 'package:background_locator_2/settings/locator_settings.dart';
 import 'package:cherry_toast/cherry_toast.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart' as geo_locator;
 import 'package:needs_delivery/core/common/app/providers/locale.dart';
 import 'package:needs_delivery/core/common/app/providers/user_provider.dart';
+import 'package:needs_delivery/core/common/widgets/list_view_shimmer.dart';
 import 'package:needs_delivery/core/common/widgets/no_internet_connection.dart';
 import 'package:needs_delivery/core/common/widgets/not_found_text.dart';
 import 'package:needs_delivery/core/enums/exception_types.dart';
@@ -16,20 +18,19 @@ import 'package:needs_delivery/core/res/colours.dart';
 import 'package:needs_delivery/core/services/location_callback_handler.dart';
 import 'package:needs_delivery/core/utils/core_utils.dart';
 import 'package:needs_delivery/core/common/app/providers/location_provider.dart';
-import 'package:needs_delivery/features/home/domain/entites/run_sheet_item_entity.dart';
+import 'package:needs_delivery/features/home/domain/entites/run_sheet_entity.dart';
 import 'package:needs_delivery/features/home/presentation/cubits/invoices/invoices_cubit.dart';
 import 'package:needs_delivery/features/home/presentation/widgets/connection_status_widget.dart';
 import 'package:needs_delivery/features/home/presentation/widgets/invoice_container.dart';
 import 'package:needs_delivery/generated/l10n.dart';
-import 'package:needs_delivery/main.dart';
 import 'package:provider/provider.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 
 class RunSheetInvoicesScreen extends StatefulWidget {
-  const RunSheetInvoicesScreen({super.key, required this.runSheetItemEntity});
+  const RunSheetInvoicesScreen({super.key, required this.runSheetEntity});
 
-  final RunSheetItemEntity runSheetItemEntity;
+  final RunSheetEntity runSheetEntity;
 
   @override
   State<RunSheetInvoicesScreen> createState() => _RunSheetInvoicesScreenState();
@@ -40,7 +41,7 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // getInvoices();
+      getInvoices();
     });
   }
 
@@ -48,7 +49,7 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
     final token = context.read<UserProvider>().user!.token;
     final lang = context.read<LocaleProvider>().getLocale!.languageCode;
     BlocProvider.of<InvoicesCubit>(context, listen: false).getRunSheetInvoices(
-        runSheetId: widget.runSheetItemEntity.runSheetId.toString(), token: token!, lang: lang);
+        runSheetId: widget.runSheetEntity.id.toString(), token: token!, lang: lang);
   }
 
   @override
@@ -74,13 +75,14 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
                       lineXY: 0.05,
                       endChild: InvoiceContainerWidget(runSheetItemEntity: item),
                       isLast: (index == state.runSheetItemEntity.length - 1),
+                      isFirst: (index == 0),
                       indicatorStyle: IndicatorStyle(
-                        width: 30,
-                        height: 30,
+                        width: 60,
+                        height: 40,
                         padding: const EdgeInsets.symmetric(horizontal: 6),
                         indicator: Container(
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.blue),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12), color: Colors.blue),
                             child: Center(
                                 child: Text(
                                   item.invoiceId.toString(),
@@ -96,6 +98,7 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
                 if (state.error.type == ExceptionType.noInternetConnection ||
                     state.error.type == ExceptionType.receiveTimeout ||
                     state.error.type == ExceptionType.sendTimeout ||
+                    state.error.type == ExceptionType.internalServerError ||
                     state.error.type == ExceptionType.connectionTimeout) {
                   return NoInternetConnection(
                     onPressed: () => getInvoices(),
@@ -107,39 +110,7 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
                   );
                 }
               } else {
-                return Column(
-                  children: [
-                    TimelineTile(
-                          alignment: TimelineAlign.manual,
-                          lineXY: 0.05,
-                          endChild: Padding(
-                            padding: EdgeInsets.only(right: (isArabic())?0:12.0,
-                            left: (isArabic())?12.0:0,),
-                            child: const InvoiceContainerWidget(runSheetItemEntity: RunSheetItemEntity(id: 1, invoiceId: 1, status: 'done',
-                                runSheetId: 1, long: '1', lat: '1',
-                                address: 'address', area: 'area',
-                                merchantId: 1, merchantImage: 'merchantImage',
-                                merchantName: 'merchantName',
-                                totalInvoice: 3)),
-                          ),
-                          isLast: true,
-                          isFirst: true,
-                          indicatorStyle: IndicatorStyle(
-                            width: 30,
-                            height: 30,
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            indicator: Container(
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle, color: Colors.blue),
-                                child: const Center(
-                                    child: Text('1',
-                                      style: TextStyle(color: Colors.white),
-                                    ))),
-                            color: Colors.blue,
-                          ),
-                        ),
-                  ],
-                );
+                return const ListViewShimmer();
               }
             })),
             Column(
@@ -153,6 +124,9 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero
+                            ),
                             backgroundColor: (provider.getButtonPressedState)
                                 ? Colors.red
                                 : Colors.green,

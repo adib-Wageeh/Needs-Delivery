@@ -47,6 +47,8 @@ enum ExceptionType{
   noOrdersAvailable,
   noInvoicesAvailable,
   noSlidesAvailable,
+  noReturnProducts,
+  noDeleteProducts,
 
   // tickets
   noTypeSelected,

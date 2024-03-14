@@ -1,1 +1,1 @@
-const baseUrl = 'https://needs.ws/api/';
+const baseUrl = 'https://needs.ws/api/delivery/';

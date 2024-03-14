@@ -65,12 +65,12 @@ class CoreUtils {
 
   static void saveAuthData(String token) async {
     const storage = FlutterSecureStorage();
-    await storage.write(key: 'needs_marketplace', value: token);
+    await storage.write(key: 'needs_delivery', value: token);
   }
 
   static Future<Map<String, dynamic>?> getAuthData() async {
     const storage = FlutterSecureStorage();
-    String? storedToken = await storage.read(key: 'needs_marketplace');
+    String? storedToken = await storage.read(key: 'needs_delivery');
     if (storedToken == null) {
       return null;
     }
@@ -79,7 +79,7 @@ class CoreUtils {
 
   static Future<void> clearAuthData() async {
     const storage = FlutterSecureStorage();
-    await storage.delete(key: 'needs_marketplace');
+    await storage.delete(key: 'needs_delivery');
   }
 
   static void showDataReviewDialog(
@@ -153,12 +153,12 @@ class CoreUtils {
     final lang = context.read<LocaleProvider>().getLocale!.languageCode;
     final selectedDate =
         Provider.of<UserProvider>(context, listen: false).getSelectedDate;
-    // if(selectedDate == null){
-    //   BlocProvider.of<RunSheetCubit>(context,listen: false).getAllRunSheets(token: token!, lang: lang);
-    // }else{
-    //   final date = DateFormat('yyyy-MM-dd').format(selectedDate);
-    //   BlocProvider.of<RunSheetCubit>(context,listen: false).getRunSheetsByDate(date: date,token: token!, lang: lang);
-    // }
+    if(selectedDate == null){
+      BlocProvider.of<RunSheetCubit>(context,listen: false).getAllRunSheets(token: token!, lang: lang);
+    }else{
+      final date = DateFormat('yyyy-MM-dd').format(selectedDate);
+      BlocProvider.of<RunSheetCubit>(context,listen: false).getRunSheetsByDate(date: date,token: token!, lang: lang);
+    }
   }
 
   static void getDailyStatics(BuildContext context) {
@@ -166,15 +166,15 @@ class CoreUtils {
     final lang = context.read<LocaleProvider>().getLocale!.languageCode;
     final selectedDate =
         Provider.of<UserProvider>(context, listen: false).getSelectedDate;
-    // if(selectedDate == null){
-    //   final date = DateFormat('yyyy-MM-dd').format(DateTime.now());
-    //   BlocProvider.of<DailyItemsStaticsCubit>(context,listen: false)
-    //       .getDailyItemsStatics(date: date,token: token!, lang: lang);
-    // }else{
-    //   final date = DateFormat('yyyy-MM-dd').format(selectedDate);
-    //   BlocProvider.of<DailyItemsStaticsCubit>(context,listen: false)
-    //       .getDailyItemsStatics(date: date,token: token!, lang: lang);
-    // }
+    if(selectedDate == null){
+      final date = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      BlocProvider.of<DailyItemsStaticsCubit>(context,listen: false)
+          .getDailyItemsStatics(date: date,token: token!, lang: lang);
+    }else{
+      final date = DateFormat('yyyy-MM-dd').format(selectedDate);
+      BlocProvider.of<DailyItemsStaticsCubit>(context,listen: false)
+          .getDailyItemsStatics(date: date,token: token!, lang: lang);
+    }
   }
 
 

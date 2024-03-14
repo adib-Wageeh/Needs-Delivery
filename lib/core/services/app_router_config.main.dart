@@ -51,7 +51,7 @@ class AppRouter {
                       BlocProvider(create: (_) => sl<ChangeStatusCubit>()),
                     ],
                     child: InvoiceOrdersScreen(
-                      invoiceId: 'ss',
+                      runSheetItemEntity: invoice,
                     ));
               },
             ),
@@ -60,8 +60,10 @@ class AppRouter {
               path: 'partialDelivery',
               builder: (context, state) {
                 final products = (state.extra as List)[0];
+                final invoice = (state.extra as List)[1];
                 return PartialDeliveryScreen(
                   orders: products as List<OrderEntity>,
+                  runSheetItemEntity: invoice,
                 );
               },
             ),
@@ -70,10 +72,13 @@ class AppRouter {
               path: 'selectDamagedAmount',
               builder: (context, state) {
                 final products = (state.extra as List)[0];
-                return ChangeNotifierProvider(
-                  create: (_) => DamagedAmountProvider(products: products),
-                  child: SelectDamagedAmountScreen(
-                    orders: orders,
+                return BlocProvider(
+                  create: (_)=> sl<DamagedProductsCubit>(),
+                  child: ChangeNotifierProvider(
+                    create: (_) => DamagedAmountProvider(products: products),
+                    child: SelectDamagedAmountScreen(
+                      orders: products,
+                    ),
                   ),
                 );
               },
@@ -83,11 +88,14 @@ class AppRouter {
               path: 'selectReturnedAmount',
               builder: (context, state) {
                 final products = (state.extra as List)[0];
-                return ChangeNotifierProvider(
-                  create: (context) =>
-                      ReturnedAmountProvider(products: products),
-                  child: SelectReturnedAmountScreen(
-                    orders: orders,
+                return BlocProvider(
+                  create: (_)=>sl<ReturnProductsCubit>(),
+                  child: ChangeNotifierProvider(
+                    create: (context) =>
+                        ReturnedAmountProvider(products: products),
+                    child: SelectReturnedAmountScreen(
+                      orders: products,
+                    ),
                   ),
                 );
               },
@@ -125,7 +133,7 @@ class AppRouter {
           return BlocProvider(
             create: (context) => sl<InvoicesCubit>(),
             child: RunSheetInvoicesScreen(
-              runSheetItemEntity: runSheet,
+              runSheetEntity: runSheet,
             ),
           );
         },

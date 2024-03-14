@@ -13,7 +13,7 @@ class _WebServices implements WebServices {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://needs.ws/api/';
+    baseUrl ??= 'https://needs.ws/api/delivery/';
   }
 
   final Dio _dio;

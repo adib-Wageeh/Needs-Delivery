@@ -8,6 +8,7 @@ class MediaRes {
   static const cartLottie = 'assets/lottie/cart_animation.json';
   static const notificationLottie = 'assets/lottie/notification_lottie.json';
   static const searchLottie = 'assets/lottie/search_lottie.json';
+  static const noDataLottie = 'assets/lottie/no_data_available.json';
 
   static const logoTransparent = 'assets/logo/app_logo_transparent.png';
   static const appIcon = 'assets/logo/app_icon.png';

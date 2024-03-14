@@ -7,8 +7,8 @@ part 'daily_items_statics_model.g.dart';
 @JsonSerializable()
 class DailyItemsStaticsModel extends DailyItemsStaticsEntity{
 
-  DailyItemsStaticsModel({required super.doneInvoices,
-    required super.totalInvoices});
+  DailyItemsStaticsModel({required super.done,
+    required super.all});
 
   factory DailyItemsStaticsModel.fromJson(DataMap json)
       => _$DailyItemsStaticsModelFromJson(json);

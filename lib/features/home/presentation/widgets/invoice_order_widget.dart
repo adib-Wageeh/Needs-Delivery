@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:needs_delivery/core/res/media_res.dart';
 import 'package:needs_delivery/features/home/domain/entites/order_entity.dart';
@@ -20,7 +22,7 @@ class InvoiceOrderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
       child: Container(
         height: 80,
         decoration: BoxDecoration(
@@ -54,7 +56,7 @@ class InvoiceOrderWidget extends StatelessWidget {
                   placeholder: (context, _) {
                     return Lottie.asset(MediaRes.loadingLottie);
                   },
-                  errorWidget: (context,_,__){
+                  errorWidget: (context, _, __) {
                     return Lottie.asset(MediaRes.loadingLottie);
                   },
                 ),
@@ -62,51 +64,63 @@ class InvoiceOrderWidget extends StatelessWidget {
               const SizedBox(
                 width: 4,
               ),
-              Flexible(
-                fit: FlexFit.tight,
-                child: LayoutBuilder(builder: (context, constraints) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: constraints.maxHeight * 0.7,
-                          child: Align(
-                            alignment: (isArabic())
-                                ? Alignment.centerRight
-                                : Alignment.centerLeft,
-                            child: AutoSizeText(
-                              minFontSize: 13,
-                              maxFontSize: 20,
-                              maxLines: 2,
-                              group: invoiceOrdersGroup,
-                              overflow: TextOverflow.ellipsis,
-                              order.productName,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold
-                              ),
-                            ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: Align(
+                          alignment: (isArabic())
+                              ? Alignment.centerRight
+                              : Alignment.centerLeft,
+                          child: Text(
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            order.productName,
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                         ),
-                        SizedBox(
-                          height: constraints.maxHeight * 0.3,
-                          child: Row(
-                            children: [
-                              Text(order.amount.toString()),
-                              const Text(' X '),
-                              Text(order.productPrice.toStringAsFixed(2)),
-                              Text(' ${S.of(context).currency}'),
-                              Text(' : ${order.totalProduct.toStringAsFixed(2)}'),
-                              Text(' ${S.of(context).currency}'),
-                            ],
-                          )
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Text(
+                              order.quantity.toString(),
+                              style: const TextStyle(
+                                  fontSize: 14),
+                            ),
+                            const Text(' X ',
+                              style: TextStyle(
+                                  fontSize: 14),),
+                            Text(order.productPrice.toString(),
+                              style: const TextStyle(
+                                  fontSize: 14),),
+                            Text(' ${S.of(context).currency}',
+                              style: const TextStyle(
+                                  fontSize: 14),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                }),
+                      ),
+                    ],
+                  ),
+                ),
               ),
+              Text(
+                order.totalProduct.toString(),
+                style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+              ),
+              Text(
+                ' ${S.of(context).currency}',
+                style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+              ),
+              const SizedBox(
+                width: 8,
+              )
             ],
           ),
         ),

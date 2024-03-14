@@ -1,10 +1,10 @@
 class DailyItemsStaticsEntity{
 
-  final int totalInvoices;
-  final int doneInvoices;
+  final int all;
+  final int done;
 
   const DailyItemsStaticsEntity({
-    required this.doneInvoices,required this.totalInvoices
+    required this.done,required this.all
 });
 
 }

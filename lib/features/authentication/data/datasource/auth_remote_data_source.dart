@@ -79,7 +79,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource{
     try{
       final response = await webServices.loginToken(token: token,lang: lang);
       // await _updateFcmToken(token: token,lang: lang);
-      return UserModel.fromJson(((response as DataMap)['data'] as List).first as DataMap).copyWith(token: token);
+      return UserModel.fromJson((response as DataMap)['data'] as DataMap).copyWith(token: token);
     }on ApiException{
       rethrow;
     }catch(e){

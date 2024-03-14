@@ -44,6 +44,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_delivery_confirmation": MessageLookupByLibrary.simpleMessage(
             "Has this order been fully delivered?"),
         "home_welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
+        "invalid_quantity_sub_title":
+            MessageLookupByLibrary.simpleMessage("Enter Valid Quantity"),
+        "invalid_quantity_title":
+            MessageLookupByLibrary.simpleMessage("Invalid Quantity"),
+        "invalid_unit_sub_title":
+            MessageLookupByLibrary.simpleMessage("Enter Valid Unit"),
+        "invalid_unit_title":
+            MessageLookupByLibrary.simpleMessage("Invalid Unit"),
         "invoice_total":
             MessageLookupByLibrary.simpleMessage("Total Invoice Cost"),
         "invoices_count":
@@ -68,8 +76,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_title": MessageLookupByLibrary.simpleMessage("Log In"),
         "no_connection_error": MessageLookupByLibrary.simpleMessage(
             "Check your internet Connection"),
+        "no_damage_products": MessageLookupByLibrary.simpleMessage(
+            "Enter Your Damaged Products Amounts Or Units"),
         "no_internet_connection":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
+        "no_return_products": MessageLookupByLibrary.simpleMessage(
+            "Enter Your Returned Products Amounts Or Units"),
         "no_run_sheets":
             MessageLookupByLibrary.simpleMessage("No Run Sheets Available"),
         "number_verification_confirm":
@@ -105,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("My Profile"),
         "profile_sign_out": MessageLookupByLibrary.simpleMessage("LogOut"),
         "reason": MessageLookupByLibrary.simpleMessage("Reason"),
+        "reason_error":
+            MessageLookupByLibrary.simpleMessage("Enter Your Reason"),
         "refused_button": MessageLookupByLibrary.simpleMessage("Refused"),
         "refused_delivery_confirmation":
             MessageLookupByLibrary.simpleMessage("Was this order rejected?"),

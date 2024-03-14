@@ -6,6 +6,7 @@ class DamagedAmountProvider extends ChangeNotifier{
   final List<OrderEntity> _products;
   final List<TextEditingController> _amountTextFields;
   final List<TextEditingController> _unitTextFields;
+  TextEditingController reason = TextEditingController();
 
   DamagedAmountProvider({required List<OrderEntity> products}):
   _products=products,
@@ -13,8 +14,8 @@ class DamagedAmountProvider extends ChangeNotifier{
   ,_unitTextFields = List.generate(products.length, (index) => TextEditingController(text: '0'));
 
   List<OrderEntity> get getProducts => _products;
-  TextEditingController getAmountTextFieldController(int index) => _amountTextFields[index];
-  TextEditingController getUnitTextFieldController(int index) => _unitTextFields[index];
+  List<TextEditingController> getAmountTextFieldsController() => _amountTextFields;
+  List<TextEditingController> getUnitTextFieldsController() => _unitTextFields;
 
   bool checkIfAmountsIsValid(){
     for(OrderEntity orderEntity in _products){
@@ -22,7 +23,10 @@ class DamagedAmountProvider extends ChangeNotifier{
       if(data == null) {
         return false;
       }
-      if(orderEntity.amount > data){
+      if(data == 0){
+        continue;
+      }
+      if(orderEntity.quantity < data){
         return false;
       }
     }
@@ -32,10 +36,13 @@ class DamagedAmountProvider extends ChangeNotifier{
   bool checkIfUnitsIsValid(){
     for(OrderEntity orderEntity in _products){
       int? data = int.tryParse(_unitTextFields[_products.indexOf(orderEntity)].text.trim());
+      if(data == 0){
+        continue;
+      }
       if(data == null) {
         return false;
       }
-      if(orderEntity.units > data){
+      if(orderEntity.units < data){
         return false;
       }
     }

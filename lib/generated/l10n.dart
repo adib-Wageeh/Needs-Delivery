@@ -740,6 +740,76 @@ class S {
     );
   }
 
+  /// `Invalid Quantity`
+  String get invalid_quantity_title {
+    return Intl.message(
+      'Invalid Quantity',
+      name: 'invalid_quantity_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Valid Quantity`
+  String get invalid_quantity_sub_title {
+    return Intl.message(
+      'Enter Valid Quantity',
+      name: 'invalid_quantity_sub_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Unit`
+  String get invalid_unit_title {
+    return Intl.message(
+      'Invalid Unit',
+      name: 'invalid_unit_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Valid Unit`
+  String get invalid_unit_sub_title {
+    return Intl.message(
+      'Enter Valid Unit',
+      name: 'invalid_unit_sub_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your Returned Products Amounts Or Units`
+  String get no_return_products {
+    return Intl.message(
+      'Enter Your Returned Products Amounts Or Units',
+      name: 'no_return_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your Damaged Products Amounts Or Units`
+  String get no_damage_products {
+    return Intl.message(
+      'Enter Your Damaged Products Amounts Or Units',
+      name: 'no_damage_products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your Reason`
+  String get reason_error {
+    return Intl.message(
+      'Enter Your Reason',
+      name: 'reason_error',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `LogOut`
   String get profile_sign_out {
     return Intl.message(

@@ -26,9 +26,7 @@ class RunSheetContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(18),
             onTap: () {
               context.pushNamed(AppRouteConstants.runSheetInvoicesRouteName,
-              extra: [RunSheetItemEntity(id: 1, invoiceId: 1, status: 'status', runSheetId: 1, long: '10', lat: '10',
-                  address: 'address', area: 'area', merchantId: 1, merchantImage: 'merchantImage',
-                  merchantName: 'merchantName', totalInvoice: 2)]
+              extra: [runSheetEntity]
               );
             },
             child: ListTile(

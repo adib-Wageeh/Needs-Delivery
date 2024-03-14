@@ -4,25 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:needs_delivery/core/enums/exception_types.dart';
 import 'package:needs_delivery/core/errors/failure.dart';
 import 'package:needs_delivery/features/home/domain/entites/order_entity.dart';
-import 'package:needs_delivery/features/home/domain/use_cases/returned_order_usecase.dart';
+import 'package:needs_delivery/features/home/domain/use_cases/damaged_order_usecase.dart';
 
-part 'return_products_state.dart';
+part 'damaged_products_state.dart';
 
-class ReturnProductsCubit extends Cubit<ReturnProductsState> {
-  ReturnProductsCubit({
-    required ReturnedOrderUseCase returnedOrderUseCase
+class DamagedProductsCubit extends Cubit<DamagedProductsState> {
+  DamagedProductsCubit({
+    required DamagedOrderUseCase damagedOrderUseCase
 }) :
-  _returnedOrderUseCase = returnedOrderUseCase
-  ,super(ReturnProductsInitial());
+        _damagedOrderUseCase = damagedOrderUseCase
+  ,super(DamagedProductsInitial());
 
-  final ReturnedOrderUseCase _returnedOrderUseCase;
+  final DamagedOrderUseCase _damagedOrderUseCase;
 
   void returnOrder({required String token,required String lang
     ,required List<OrderEntity> orders,
     required String invoiceId,required String reason
     ,required List<TextEditingController> amounts
     ,required List<TextEditingController> units})async{
-    emit(ReturnProductsLoading());
+    emit(DamagedProductsLoading());
     bool flag = false;
 
     for(OrderEntity order in orders) {
@@ -30,7 +30,7 @@ class ReturnProductsCubit extends Cubit<ReturnProductsState> {
       if(amounts[currentIndex].text.trim() != '0' ||
           units[currentIndex].text.trim() != '0') {
         flag = true;
-        final result = await _returnedOrderUseCase.call(ReturnedOrderParams(
+        final result = await _damagedOrderUseCase.call(DamagedOrderParams(
             token: token,
             amount: amounts[currentIndex].text.trim(),
             orderId: order.id.toString(),
@@ -39,15 +39,15 @@ class ReturnProductsCubit extends Cubit<ReturnProductsState> {
             units: units[currentIndex].text.trim(),
             lang: lang));
         result.fold((l) {
-          emit(ReturnProductsError(error: l));
+          emit(DamagedProductsError(error: l));
         }, (_) => null);
       }
     }
     if(flag == false)
       {
-      emit(const ReturnProductsError(error: ApiFailure(type: ExceptionType.noReturnProducts)));
+      emit(const DamagedProductsError(error: ApiFailure(type: ExceptionType.noReturnProducts)));
       }else {
-      emit(ReturnProductsDone());
+      emit(DamagedProductsDone());
     }
   }
 

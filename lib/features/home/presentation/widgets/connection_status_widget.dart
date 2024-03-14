@@ -12,22 +12,30 @@ class ConnectionStatusWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LocationProvider>(builder: (context,provider,_){
-      bool status = (provider.getButtonPressedState && provider.getGpsStatus && provider.getConnectionStatus);
+    return Consumer<LocationProvider>(builder: (context, provider, _) {
+      bool status = (provider.getButtonPressedState &&
+          provider.getGpsStatus &&
+          provider.getConnectionStatus);
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Align(
-          alignment: (isArabic())?Alignment.centerRight:Alignment.centerLeft,
-          child: ElevatedButton.icon(onPressed: (){},
+          alignment:
+              (isArabic()) ? Alignment.centerRight : Alignment.centerLeft,
+          child: ElevatedButton.icon(
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  backgroundColor: (status)?Colors.green:Colors.red,
+                  backgroundColor: (status) ? Colors.green : Colors.red,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24)
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20)
-              ),
-              icon: Icon((status)?EvaIcons.wifi:EvaIcons.alertCircleOutline),
-              label: Text((status)?S.of(context).online:S.of(context).offline)),
+                      borderRadius: BorderRadius.circular(24)),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20)),
+              icon:
+                  Icon((status) ? EvaIcons.wifi : EvaIcons.alertCircleOutline,
+                  color: Colors.white,),
+              label: Text(
+                (status) ? S.of(context).online : S.of(context).offline,
+                style: const TextStyle(color: Colors.white),
+              )),
         ),
       );
     });

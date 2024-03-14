@@ -10,12 +10,12 @@ class OrderEntity {
   @JsonKey(name: 'product_name')
   final String productName;
   @JsonKey(name: 'product_price')
-  final double productPrice;
+  final String productPrice;
   final String? image;
-  final int amount;
+  final int quantity;
   final int units;
   @JsonKey(name: 'total_product')
-  final double totalProduct;
+  final String totalProduct;
 
 
   OrderEntity({
@@ -24,7 +24,7 @@ class OrderEntity {
     this.image,
     required this.totalProduct,
     required this.productId,
-    required this.amount,
+    required this.quantity,
     required this.productName,
     required this.productPrice,
     required this.units

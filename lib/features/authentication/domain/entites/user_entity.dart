@@ -6,8 +6,6 @@ class UserEntity{
   final String name;
   @JsonKey(name: 'last_name')
   final String lastName;
-  @JsonKey(name: 'merchant_name')
-  final String? merchantName;
   final String? email;
   final String mobile;
   final String? token;
@@ -22,7 +20,6 @@ class UserEntity{
   const UserEntity({
     required this.id,
     this.wallet,
-    this.merchantName,
     this.address,
     this.image,
     this.lat,

@@ -10,7 +10,7 @@ class RunSheetEntity{
   @JsonKey(name: 'delivery_date')
   final String date;
   @JsonKey(name: 'invoices_count')
-  final String invoicesCount;
+  final int invoicesCount;
 
   const RunSheetEntity({required this.id,required this.date,
     required this.location,this.car,required this.invoicesCount});

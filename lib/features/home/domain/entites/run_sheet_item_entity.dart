@@ -25,12 +25,14 @@ class RunSheetItemEntity {
   final double totalInvoice;
   @JsonKey(name: 'status')
   final String status;
+  final String mobile;
 
   const RunSheetItemEntity({
    required this.id,required this.invoiceId,required this.status,
    required this.runSheetId,required this.long,required this.lat,
    required this.address,required this.area,required this.merchantId,
-   required this.merchantImage,required this.merchantName,required this.totalInvoice
+   required this.merchantImage,required this.merchantName,required this.totalInvoice,
+   required this.mobile
 });
 
 }

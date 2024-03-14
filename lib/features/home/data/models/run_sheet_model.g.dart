@@ -11,7 +11,7 @@ RunSheetModel _$RunSheetModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       date: json['delivery_date'] as String,
       location: json['center_name'] as String,
-      invoicesCount: json['invoices_count'] as String,
+      invoicesCount: json['invoices_count'] as int,
       car: json['car'] as String?,
     );
 

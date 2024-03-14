@@ -80,25 +80,11 @@ class HomeHeader extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      if(user.image != null)
                       CircleAvatar(
                           radius: 24,
                           backgroundImage: CachedNetworkImageProvider(user.image!),
                         ),
-                      const SizedBox(height: 8,),
-                      SizedBox(
-                        height: constraints.maxHeight*0.3,
-                        child: AutoSizeText(user.merchantName!,
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              color: Colors.white
-                            ),
-                            minFontSize: 8,
-                            maxFontSize: 20,
-                          ),
-                      ),
                     ],
                   ),
                 )

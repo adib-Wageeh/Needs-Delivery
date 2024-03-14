@@ -9,11 +9,11 @@ part of 'order_model.dart';
 OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       id: json['id'] as int,
       invoiceId: json['invoice_id'] as int,
-      totalProduct: (json['total_product'] as num).toDouble(),
+      totalProduct: json['total_product'] as String,
       productId: json['product_id'] as int,
-      amount: json['amount'] as int,
+      quantity: json['quantity'] as int,
       productName: json['product_name'] as String,
-      productPrice: (json['product_price'] as num).toDouble(),
+      productPrice: json['product_price'] as String,
       units: json['units'] as int,
       image: json['image'] as String?,
     );
@@ -26,7 +26,7 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'product_name': instance.productName,
       'product_price': instance.productPrice,
       'image': instance.image,
-      'amount': instance.amount,
+      'quantity': instance.quantity,
       'units': instance.units,
       'total_product': instance.totalProduct,
     };

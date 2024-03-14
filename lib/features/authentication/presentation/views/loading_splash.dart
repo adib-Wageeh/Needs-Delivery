@@ -30,7 +30,7 @@ class _LoadingSplashState extends State<LoadingSplash> {
 
   Future<void> checkAuth() async {
     final res = await CoreUtils.getAuthData();
-
+    print(res);
     if (res != null) {
       await loginToken(res['token']);
     } else {

@@ -71,6 +71,13 @@
   "order_units": "كمية",
   "reason": "السبب",
   "invoice_total": "إجمالى تكلفة الفاتورة",
+  "invalid_quantity_title": "وحدات غير صحيحة",
+  "invalid_quantity_sub_title": "برجاء أدخال وحدات صحيحة",
+  "invalid_unit_title": "كمية غير صحيحة",
+  "invalid_unit_sub_title": "برجاء أدخال كمية صحيحة",
+  "no_return_products": "أدخل كميات أو وحدات المنتجات المرتجعات",
+  "no_damage_products": "أدخل كميات أو وحدات المنتجات التالفة",
+  "reason_error": "برجاء أدخال السبب",
 
   "profile_sign_out": "تسجيل الخروج",
   "edit_profile_old_password_empty":"كلمه المرور القديمه غير صحيحة",

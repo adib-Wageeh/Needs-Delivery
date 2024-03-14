@@ -4,20 +4,17 @@ import 'package:go_router/go_router.dart';
 import 'package:needs_delivery/core/res/colours.dart';
 import 'package:needs_delivery/core/utils/app_route_constants.dart';
 import 'package:needs_delivery/features/home/domain/entites/order_entity.dart';
+import 'package:needs_delivery/features/home/domain/entites/run_sheet_item_entity.dart';
 import 'package:needs_delivery/generated/l10n.dart';
 
 var invoiceOrdersGroup = AutoSizeGroup();
 
-class PartialDeliveryScreen extends StatefulWidget {
-  const PartialDeliveryScreen({super.key, required this.orders});
+class PartialDeliveryScreen extends StatelessWidget {
+  const PartialDeliveryScreen({super.key, required this.orders,required this.runSheetItemEntity});
 
   final List<OrderEntity> orders;
+  final RunSheetItemEntity runSheetItemEntity;
 
-  @override
-  State<PartialDeliveryScreen> createState() => _PartialDeliveryScreenState();
-}
-
-class _PartialDeliveryScreenState extends State<PartialDeliveryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +42,7 @@ class _PartialDeliveryScreenState extends State<PartialDeliveryScreen> {
                             context.pushNamed(
                                 AppRouteConstants.selectDamagedAmountRouteName,
                                 extra: [
-                                  widget.orders,
+                                  orders,
                                 ]);
                           },
                           child: Text(S.of(context).damaged_button)),
@@ -59,7 +56,7 @@ class _PartialDeliveryScreenState extends State<PartialDeliveryScreen> {
                             context.pushNamed(
                                 AppRouteConstants.selectReturnedAmountRouteName,
                                 extra: [
-                                  widget.orders,
+                                  orders,
                                 ]);
                           },
                           child: Text(S.of(context).returned_products_button))
@@ -74,7 +71,7 @@ class _PartialDeliveryScreenState extends State<PartialDeliveryScreen> {
                 ),
                 tileColor: Colors.grey.shade300,
                 title: Text(S.of(context).invoice_total),
-                subtitle: Text('100 ${S.of(context).currency}',
+                subtitle: Text('${runSheetItemEntity.totalInvoice.toStringAsFixed(2)} ${S.of(context).currency}',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold
                   ),
