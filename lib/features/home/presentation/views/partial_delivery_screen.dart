@@ -82,24 +82,6 @@ class PartialDeliveryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 60,
-              width: double.infinity,
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colours.orangeColor,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                  onPressed: () {
-
-                  },
-                  child: Text(
-                    S.of(context).number_verification_confirm,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
-                  )),
-            )
           ],
         ),
       );

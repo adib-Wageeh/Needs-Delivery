@@ -34,7 +34,6 @@ class RunSheetCubit extends Cubit<RunSheetState> {
   void getRunSheetsByDate({required String token,required String lang,required String date})async{
     emit(RunSheetLoading());
     DateTime dateTime = DateFormat('yyyy-MM-dd').parse(date);
-    print(DateFormat('yyyy-MM-dd','en_US').format(dateTime));
     final result = await _getRunSheetsByDateUseCase.call(GetRunSheetsByDateParams(
         token: token,
         date: DateFormat('yyyy-MM-dd','en_US').format(dateTime),

@@ -23,9 +23,6 @@ class LocationServiceRepository {
   int _count = -1;
 
   Future<void> init(Map<dynamic, dynamic> params) async {
-    if (kDebugMode) {
-      print("***********Init callback handler");
-    }
     if (params.containsKey('countInit')) {
       dynamic tmpCount = params['countInit'];
       if (tmpCount is double) {
@@ -45,20 +42,14 @@ class LocationServiceRepository {
   }
 
   Future<void> dispose() async {
-    if (kDebugMode) {
-      print("***********Dispose callback handler");
-    }
     final SendPort? send = IsolateNameServer.lookupPortByName(isolateName);
     send?.send(null);
   }
 
   Future<void> callback(LocationDto locationDto) async {
-
-
     final SendPort? send = IsolateNameServer.lookupPortByName(isolateName);
     send?.send(locationDto.toJson());
     _count++;
-
   }
 
 }
