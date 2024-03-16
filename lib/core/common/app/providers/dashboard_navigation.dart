@@ -7,10 +7,9 @@ import 'package:needs_delivery/features/home/presentation/views/home_view.dart';
 import 'package:needs_delivery/features/profile/presentation/views/profile_view.dart';
 
 class DashboardNavigation extends ChangeNotifier {
-  int _currentIndex = 2;
+  int _currentIndex = 0;
 
   final _pages = [
-    const Placeholder(),
     MultiBlocProvider(providers: [
       BlocProvider(create: (_) => sl<RunSheetCubit>()),
       BlocProvider(create: (_) => sl<DailyItemsStaticsCubit>())
@@ -23,7 +22,7 @@ class DashboardNavigation extends ChangeNotifier {
   int get currentIndex => _currentIndex;
 
   void resetDashboard() {
-    _currentIndex = 1;
+    _currentIndex = 0;
     notifyListeners();
   }
 

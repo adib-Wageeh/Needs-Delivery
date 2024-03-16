@@ -26,7 +26,7 @@ class OrderStatusRemoteDataSourceImpl implements OrderStatusRemoteDataSource{
     try{
       final response = await webServices.changeOrderStatus(
       map: {
-        'runsheet_id': invoiceId,
+        'runsheet_item_id': invoiceId,
         'status': status
       }
       ,lang: lang,token: token);
@@ -75,7 +75,7 @@ class OrderStatusRemoteDataSourceImpl implements OrderStatusRemoteDataSource{
           map: {
             'runsheet_item_id': invoiceId,
             'order_id': orderId,
-            'amount': amount,
+            'quantity': amount,
             'units': units,
             'reason': reason
           }

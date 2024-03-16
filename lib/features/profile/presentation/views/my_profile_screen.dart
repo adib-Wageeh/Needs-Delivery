@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:needs_delivery/core/common/app/providers/locale.dart';
 import 'package:needs_delivery/core/common/app/providers/user_provider.dart';
 import 'package:needs_delivery/core/res/colours.dart';
@@ -80,63 +79,14 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   lastNameController: provider.getLastNameController,
                   phoneController: provider.getPhoneController,
                   emailController: provider.getEmailController,
-                  locationController: provider.getLocationController,
-                  addressController: provider.getAddressController,
-                ),
-                BlocBuilder<UpdateCubit, UpdateState>(
-                  builder: (context, state) {
-                    if(state is! AuthLocationLoading) {
-                      return IconButton(onPressed: () async {
-                        final network = await InternetConnectionChecker()
-                            .connectionStatus;
-                        if (network == InternetConnectionStatus.disconnected) {
-                          if (context.mounted) {
-                            CoreUtils.showSnackBar(
-                                context, 'no internet connection');
-                          }
-                        } else {
-                          if (context.mounted) {
-                            BlocProvider.of<UpdateCubit>(context, listen: false)
-                                .requestLocation();
-                          }
-                        }
-                      },
-                          highlightColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          splashColor: Colors.transparent
-                          ,
-                          icon: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              const Icon(Icons.location_on,
-                                  color: Colours.secondaryColor),
-                              SizedBox(width: 4.w,),
-                              Text(S.of(context).update_location),
-                            ],
-                          ));
-                    }else{
-                      return const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CircularProgressIndicator.adaptive(),
-                        ],
-                      );
-                    }
-                  },
                 ),
               ],
             )
             );
-
           }, listener: (context,state){
           if(state is UpdateError){
             CoreUtils.showSnackBar(context
               , state.error.message!,);
-          }if(state is AuthLocationGathered){
-            provider.updateLocation(state.placemark,state.position.latitude.toString()
-                ,state.position.longitude.toString());
-            CoreUtils.showSnackBar(context
-              , 'location has been updated please confirm',);
           }
           if(state is UserUpdated){
             Provider.of<UserProvider>(context,listen: false).initUser(state.userEntity as UserModel);

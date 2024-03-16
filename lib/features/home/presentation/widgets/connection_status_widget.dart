@@ -13,9 +13,10 @@ class ConnectionStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<LocationProvider>(builder: (context, provider, _) {
-      bool status = (provider.getButtonPressedState &&
-          provider.getGpsStatus &&
-          provider.getConnectionStatus);
+      bool status = (provider.getButtonPressedState
+          && provider.getConnectionStatus
+          && provider.getGpsStatus);
+
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Align(

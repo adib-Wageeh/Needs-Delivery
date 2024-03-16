@@ -30,7 +30,6 @@ class _DashBoardState extends State<DashBoard> {
               index: navigator.currentIndex,
               height: 60,
               items: const <Widget>[
-                Icon(Icons.account_box_rounded, size: 30, color: Colors.white),
                 Icon(Icons.home, size: 30, color: Colors.white),
                 Icon(Icons.list, size: 30, color: Colors.white),
               ],

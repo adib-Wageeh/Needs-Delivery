@@ -17,8 +17,7 @@ class UpdateLoading extends UpdateState {
 
 class UserUpdated extends UpdateState {
   final UserEntity userEntity;
-  final String address;
-  const UserUpdated({required this.userEntity,required this.address});
+  const UserUpdated({required this.userEntity});
 }
 
 class PasswordUpdated extends UpdateState {

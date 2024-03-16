@@ -22,9 +22,9 @@ class OrdersProgressBar extends StatelessWidget {
         children: [
           RoundedProgressBar(
               childLeft: (isArabic())?null: Text(state.dailyItemsStaticsEntity.done.toString(),
-                  style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+                  style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
               childRight: (isArabic())? Text(state.dailyItemsStaticsEntity.done.toString(),
-                  style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold)):null,
+                  style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold)):null,
               percent: (state.dailyItemsStaticsEntity.all != 0)?
               (100 * (state.dailyItemsStaticsEntity.done/state.dailyItemsStaticsEntity.all)):0,
               theme: RoundedProgressBarTheme.green),

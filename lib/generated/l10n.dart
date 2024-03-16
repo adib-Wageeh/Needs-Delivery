@@ -670,6 +670,16 @@ class S {
     );
   }
 
+  /// `Has this order been Partially delivered?`
+  String get partial_delivery_confirmation {
+    return Intl.message(
+      'Has this order been Partially delivered?',
+      name: 'partial_delivery_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Was this order rejected?`
   String get refused_delivery_confirmation {
     return Intl.message(
@@ -805,6 +815,26 @@ class S {
     return Intl.message(
       'Enter Your Reason',
       name: 'reason_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Runsheet No. # `
+  String get run_sheet_id {
+    return Intl.message(
+      'Runsheet No. # ',
+      name: 'run_sheet_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invoice No. # `
+  String get invoice_id {
+    return Intl.message(
+      'Invoice No. # ',
+      name: 'invoice_id',
       desc: '',
       args: [],
     );

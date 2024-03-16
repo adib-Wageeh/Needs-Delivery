@@ -10,7 +10,6 @@ import 'package:needs_delivery/core/res/colours.dart';
 import 'package:needs_delivery/core/utils/app_route_constants.dart';
 import 'package:needs_delivery/features/home/domain/entites/order_entity.dart';
 import 'package:needs_delivery/features/home/presentation/cubits/damaged_products/damaged_products_cubit.dart';
-import 'package:needs_delivery/features/home/presentation/cubits/return_products/return_products_cubit.dart';
 import 'package:needs_delivery/features/home/presentation/provider/damaged_products_provider.dart';
 import 'package:needs_delivery/features/home/presentation/views/invoice_orders_screen.dart';
 import 'package:needs_delivery/features/home/presentation/widgets/order_quantity_widget.dart';
@@ -19,9 +18,12 @@ import 'package:provider/provider.dart';
 
 class SelectDamagedAmountScreen extends StatelessWidget {
   const SelectDamagedAmountScreen(
-      {super.key,required this.orders});
+      {super.key,required this.orders,required this.runSheetId,
+      required this.runSheetItemId});
 
   final List<OrderEntity> orders;
+  final String runSheetId;
+  final String runSheetItemId;
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +44,9 @@ class SelectDamagedAmountScreen extends StatelessWidget {
             CherryToast.error(
               title: Text(state.error.errorMessage),).show(context);
           }
-        }else if(state is ReturnProductsDone){
-          GoRouter.of(context).goNamed(AppRouteConstants.runSheetInvoicesRouteName);
+        }else if(state is DamagedProductsDone){
+          Navigator.popUntil(context, (route) => (route.isFirst));
+          context.pushNamed(AppRouteConstants.runSheetInvoicesRouteName,extra: [int.parse(runSheetId)]);
         }
       },
       child: Consumer<DamagedAmountProvider>(
@@ -120,9 +123,9 @@ class SelectDamagedAmountScreen extends StatelessWidget {
                                         title: Text(S.of(context).reason_error),
                                       ).show(context);
                                     }else {
-                                      BlocProvider.of<ReturnProductsCubit>(context,listen: false)
+                                      BlocProvider.of<DamagedProductsCubit>(context,listen: false)
                                           .returnOrder(token: token!, lang: lang, orders: provider.getProducts,
-                                          invoiceId: provider.getProducts.first.invoiceId.toString(),
+                                          invoiceId: runSheetItemId,
                                           reason: provider.reason.text.trim(),
                                           amounts: provider.getAmountTextFieldsController(),
                                           units: provider.getAmountTextFieldsController());

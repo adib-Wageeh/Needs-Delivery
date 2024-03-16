@@ -54,8 +54,7 @@ Future<void> _registerInit() async {
 
 Future<void> _updateInit() async {
   sl.registerFactory(() => UpdateCubit(
-      updateUserUseCase: UpdateUserUseCase(authenticationRepo: sl()),
-      locationService: sl()));
+      updateUserUseCase: UpdateUserUseCase(authenticationRepo: sl()),));
 }
 
 Future<void> _updateLocationInit() async {

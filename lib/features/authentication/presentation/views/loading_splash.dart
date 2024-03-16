@@ -30,13 +30,12 @@ class _LoadingSplashState extends State<LoadingSplash> {
 
   Future<void> checkAuth() async {
     final res = await CoreUtils.getAuthData();
-    print(res);
     if (res != null) {
       await loginToken(res['token']);
     } else {
       if (context.mounted) {
         GoRouter.of(context)
-            .pushReplacementNamed(AppRouteConstants.signInRouteName);
+            .goNamed(AppRouteConstants.signInRouteName);
       }
     }
   }
@@ -60,13 +59,13 @@ class _LoadingSplashState extends State<LoadingSplash> {
             context.read<UserProvider>().initUser(user as UserModel);
             Provider.of<DashboardNavigation>(context,listen: false).resetDashboard();
             GoRouter.of(context)
-                .pushReplacementNamed(AppRouteConstants.dashBoardRouteName);
+                .goNamed(AppRouteConstants.dashBoardRouteName);
           }
           if (state is SignInError) {
             if (state.error.type == ExceptionType.userNotFound) {
               if (context.mounted) {
                 GoRouter.of(context)
-                    .pushReplacementNamed(AppRouteConstants.signInRouteName);
+                    .goNamed(AppRouteConstants.signInRouteName);
               }
             } else {
               if (context.mounted) {

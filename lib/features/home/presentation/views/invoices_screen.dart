@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:background_locator_2/background_locator.dart';
+import 'package:background_locator_2/location_dto.dart';
 import 'package:background_locator_2/settings/android_settings.dart';
 import 'package:background_locator_2/settings/ios_settings.dart';
 import 'package:background_locator_2/settings/locator_settings.dart';
@@ -28,9 +29,9 @@ import 'package:timeline_tile/timeline_tile.dart';
 
 
 class RunSheetInvoicesScreen extends StatefulWidget {
-  const RunSheetInvoicesScreen({super.key, required this.runSheetEntity});
+  const RunSheetInvoicesScreen({super.key, required this.runSheetId});
 
-  final RunSheetEntity runSheetEntity;
+  final int runSheetId;
 
   @override
   State<RunSheetInvoicesScreen> createState() => _RunSheetInvoicesScreenState();
@@ -49,7 +50,7 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
     final token = context.read<UserProvider>().user!.token;
     final lang = context.read<LocaleProvider>().getLocale!.languageCode;
     BlocProvider.of<InvoicesCubit>(context, listen: false).getRunSheetInvoices(
-        runSheetId: widget.runSheetEntity.id.toString(), token: token!, lang: lang);
+        runSheetId: widget.runSheetId.toString(), token: token!, lang: lang);
   }
 
   @override
@@ -60,7 +61,9 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
           backgroundColor: Colours.primaryColor,
           elevation: 0,
           foregroundColor: Colors.white,
-          title: Text(S.of(context).your_orders),
+          title: Text('${S.of(context).run_sheet_id} ${widget.runSheetId.toString()}',
+            style: const TextStyle(fontSize: 16),
+          ),
         ),
         body: Column(
           children: [
@@ -82,7 +85,8 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 6),
                         indicator: Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12), color: Colors.blue),
+                                borderRadius: BorderRadius.circular(12), color:
+                            (item.status != 'Created')?Colors.green:Colors.blue),
                             child: Center(
                                 child: Text(
                                   item.invoiceId.toString(),
@@ -138,6 +142,7 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
                                 .updateButtonPressedStatus = false;
                             onStop();
                           } else {
+                            checkGpsService(context);
                             _onStart();
                           }
                         },
@@ -164,7 +169,6 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
         bool result = await geo_locator.Geolocator.isLocationServiceEnabled();
         if (result == true) {
           if (context.mounted) {
-            listenToGpsService(context);
             Provider.of<LocationProvider>(context, listen: false)
                 .updateButtonPressedStatus = true;
             await _startLocator();
@@ -231,17 +235,13 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
         ));
   }
 
-  void listenToGpsService(BuildContext context) async {
+  void checkGpsService(BuildContext context) async {
     bool gpsEnabled = await geo_locator.Geolocator.isLocationServiceEnabled();
-    if (context.mounted) {
-      final provider = Provider.of<LocationProvider>(context, listen: false);
-      provider.updateGpsStatus((gpsEnabled)
-          ? geo_locator.ServiceStatus.enabled
-          : geo_locator.ServiceStatus.disabled);
-      final stream = geo_locator.Geolocator.getServiceStatusStream();
-      stream.listen((status) {
-        provider.updateGpsStatus(status);
-      });
+    final provider = Provider.of<LocationProvider>(context, listen: false);
+    if(gpsEnabled){
+      provider.updateGpsStatus(true);
+    }else{
+      provider.updateGpsStatus(false);
     }
   }
 }

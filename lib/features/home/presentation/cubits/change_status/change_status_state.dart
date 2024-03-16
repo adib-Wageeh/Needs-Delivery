@@ -12,7 +12,9 @@ class ChangeStatusLoading extends ChangeStatusState {
 }
 
 class ChangeStatusDone extends ChangeStatusState {
-  const ChangeStatusDone();
+  final String type;
+  final List<OrderEntity> orders;
+  const ChangeStatusDone({required this.type,required this.orders});
 }
 
 

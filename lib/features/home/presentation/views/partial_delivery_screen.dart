@@ -43,6 +43,8 @@ class PartialDeliveryScreen extends StatelessWidget {
                                 AppRouteConstants.selectDamagedAmountRouteName,
                                 extra: [
                                   orders,
+                                  runSheetItemEntity.runSheetId.toString(),
+                                  runSheetItemEntity.id.toString()
                                 ]);
                           },
                           child: Text(S.of(context).damaged_button)),
@@ -57,6 +59,8 @@ class PartialDeliveryScreen extends StatelessWidget {
                                 AppRouteConstants.selectReturnedAmountRouteName,
                                 extra: [
                                   orders,
+                                  runSheetItemEntity.runSheetId.toString(),
+                                  runSheetItemEntity.id.toString()
                                 ]);
                           },
                           child: Text(S.of(context).returned_products_button))

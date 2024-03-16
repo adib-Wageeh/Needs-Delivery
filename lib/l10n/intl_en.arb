@@ -64,6 +64,7 @@
   "offline": "Disconnected",
   "cancel": "Cancel",
   "full_delivery_confirmation": "Has this order been fully delivered?",
+  "partial_delivery_confirmation": "Has this order been Partially delivered?",
   "refused_delivery_confirmation": "Was this order rejected?",
   "yes": "Yes",
   "invoices_count": "Invoices count: ",
@@ -78,6 +79,8 @@
   "no_return_products": "Enter Your Returned Products Amounts Or Units",
   "no_damage_products": "Enter Your Damaged Products Amounts Or Units",
   "reason_error": "Enter Your Reason",
+  "run_sheet_id": "Runsheet No. # ",
+  "invoice_id": "Invoice No. # ",
 
   "profile_sign_out": "LogOut",
   "edit_profile_title":"Edit Profile",

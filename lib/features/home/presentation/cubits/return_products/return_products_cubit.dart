@@ -24,6 +24,7 @@ class ReturnProductsCubit extends Cubit<ReturnProductsState> {
     ,required List<TextEditingController> units})async{
     emit(ReturnProductsLoading());
     bool flag = false;
+    bool error = false;
 
     for(OrderEntity order in orders) {
       int currentIndex = orders.indexOf(order);
@@ -39,6 +40,7 @@ class ReturnProductsCubit extends Cubit<ReturnProductsState> {
             units: units[currentIndex].text.trim(),
             lang: lang));
         result.fold((l) {
+          error = true;
           emit(ReturnProductsError(error: l));
         }, (_) => null);
       }
@@ -47,7 +49,9 @@ class ReturnProductsCubit extends Cubit<ReturnProductsState> {
       {
       emit(const ReturnProductsError(error: ApiFailure(type: ExceptionType.noReturnProducts)));
       }else {
-      emit(ReturnProductsDone());
+      if(error != true) {
+        emit(ReturnProductsDone());
+      }
     }
   }
 

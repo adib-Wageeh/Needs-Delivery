@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("برجاء أدخال كمية صحيحة"),
         "invalid_unit_title":
             MessageLookupByLibrary.simpleMessage("كمية غير صحيحة"),
+        "invoice_id": MessageLookupByLibrary.simpleMessage("فاتورة رقم"),
         "invoice_total":
             MessageLookupByLibrary.simpleMessage("إجمالى تكلفة الفاتورة"),
         "invoices_count":
@@ -92,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_amount": MessageLookupByLibrary.simpleMessage("وحدات"),
         "order_units": MessageLookupByLibrary.simpleMessage("كمية"),
         "partial_button": MessageLookupByLibrary.simpleMessage("توصيل جزئى"),
+        "partial_delivery_confirmation": MessageLookupByLibrary.simpleMessage(
+            "هل تم توصيل هذا الطلب جزئيآ؟"),
         "partial_delivery_damaged_quantity_title":
             MessageLookupByLibrary.simpleMessage("حدد كمية المنتجات التالفة"),
         "partial_delivery_returned_quantity_title":
@@ -141,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register_title": MessageLookupByLibrary.simpleMessage("حساب جديد"),
         "returned_products_button":
             MessageLookupByLibrary.simpleMessage("مرتجعات"),
+        "run_sheet_id":
+            MessageLookupByLibrary.simpleMessage("قائمة تشغيل رقم "),
         "today_orders": MessageLookupByLibrary.simpleMessage("طلبات اليوم"),
         "today_orders_end": MessageLookupByLibrary.simpleMessage("إنهاء"),
         "today_orders_start": MessageLookupByLibrary.simpleMessage("إبدأ"),

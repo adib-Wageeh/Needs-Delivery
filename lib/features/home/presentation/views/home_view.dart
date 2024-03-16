@@ -32,7 +32,6 @@ class _HomeViewState extends State<HomeView> {
         children: [
           Expanded(
             child: ListView(
-              shrinkWrap: true,
               children: const [
                 HomeHeader(),
                 DatePickerWidget(),
@@ -42,6 +41,7 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           const ConnectionStatusWidget(),
+          const SizedBox(height: 8,)
         ],
       ),
     );

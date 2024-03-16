@@ -3,8 +3,10 @@ import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:background_locator_2/location_dto.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:needs_delivery/core/services/web_services.dart';
 
 
 class LocationServiceRepository {
@@ -51,9 +53,7 @@ class LocationServiceRepository {
   }
 
   Future<void> callback(LocationDto locationDto) async {
-    // if (kDebugMode) {
-    //   print('$_count location in dart: ${locationDto.toString()}');
-    // }
+
 
     final SendPort? send = IsolateNameServer.lookupPortByName(isolateName);
     send?.send(locationDto.toJson());

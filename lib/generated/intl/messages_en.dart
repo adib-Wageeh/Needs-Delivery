@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter Valid Unit"),
         "invalid_unit_title":
             MessageLookupByLibrary.simpleMessage("Invalid Unit"),
+        "invoice_id": MessageLookupByLibrary.simpleMessage("Invoice No. # "),
         "invoice_total":
             MessageLookupByLibrary.simpleMessage("Total Invoice Cost"),
         "invoices_count":
@@ -95,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_units": MessageLookupByLibrary.simpleMessage("Units"),
         "partial_button":
             MessageLookupByLibrary.simpleMessage("Partial delivery"),
+        "partial_delivery_confirmation": MessageLookupByLibrary.simpleMessage(
+            "Has this order been Partially delivered?"),
         "partial_delivery_damaged_quantity_title":
             MessageLookupByLibrary.simpleMessage(
                 "Select Amount Of Damaged Products"),
@@ -145,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "register_title": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "returned_products_button":
             MessageLookupByLibrary.simpleMessage("Returned products"),
+        "run_sheet_id": MessageLookupByLibrary.simpleMessage("Runsheet No. # "),
         "today_orders": MessageLookupByLibrary.simpleMessage("Today\'s orders"),
         "today_orders_end": MessageLookupByLibrary.simpleMessage("End"),
         "today_orders_start": MessageLookupByLibrary.simpleMessage("Start"),

@@ -8,10 +8,8 @@ part 'user_model.g.dart';
 class UserModel extends UserEntity{
 
   UserModel({
-    required super.id,super.lat,super.long,super.address,
-    required super.name,super.email, required super.mobile,
-    super.token,required super.lastName,super.wallet
-    ,super.location,super.image});
+    required super.id,required super.name,super.email, required super.mobile,
+    super.token,required super.lastName,super.image});
 
 
   factory UserModel.fromJson(DataMap json) => _$UserModelFromJson(json);
@@ -26,25 +24,15 @@ class UserModel extends UserEntity{
     String? image,
     String? phone,
     String? lastName,
-    String? location,
-    String? address,
     String? token,
-    String? lat,
-    String? long,
-    double? wallet
   }) {
     return UserModel(
       id: id ?? this.id,
-      wallet: wallet ?? this.wallet,
-      long: long ?? this.long,
-      lat: lat ?? this.lat,
-      address: address ?? this.address,
       image: image ?? this.image,
       email: email ?? this.email,
       name: name ?? this.name,
       mobile: phone ?? mobile,
       lastName: lastName ?? this.lastName,
-      location: location ?? this.location,
       token: token ?? this.token,
     );
   }

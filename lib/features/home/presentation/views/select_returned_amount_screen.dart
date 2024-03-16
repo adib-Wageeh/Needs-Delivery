@@ -19,9 +19,11 @@ import '../cubits/return_products/return_products_cubit.dart';
 
 class SelectReturnedAmountScreen extends StatelessWidget {
   const SelectReturnedAmountScreen(
-      {super.key,required this.orders});
+      {super.key,required this.orders,required this.runSheetId,required this.runSheetItemId});
 
   final List<OrderEntity> orders;
+  final String runSheetId;
+  final String runSheetItemId;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,8 @@ class SelectReturnedAmountScreen extends StatelessWidget {
               title: Text(state.error.errorMessage),).show(context);
           }
         }else if(state is ReturnProductsDone){
-          GoRouter.of(context).goNamed(AppRouteConstants.runSheetInvoicesRouteName);
+          Navigator.popUntil(context, (route) => (route.isFirst));
+          context.pushNamed(AppRouteConstants.runSheetInvoicesRouteName,extra: [int.parse(runSheetId)]);
         }
       },
       child: Consumer<ReturnedAmountProvider>(
@@ -51,7 +54,7 @@ class SelectReturnedAmountScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                S.of(context).damaged_button,
+                S.of(context).returned_products_button,
               ),
               backgroundColor: Colours.primaryColor,
               foregroundColor: Colors.white,
@@ -122,7 +125,7 @@ class SelectReturnedAmountScreen extends StatelessWidget {
                                   }else {
                                     BlocProvider.of<ReturnProductsCubit>(context,listen: false)
                                   .returnOrder(token: token!, lang: lang, orders: provider.getProducts,
-                                  invoiceId: provider.getProducts.first.invoiceId.toString(),
+                                  invoiceId: runSheetItemId,
                                   reason: provider.reason.text.trim(),
                                   amounts: provider.getAmountTextFieldsController(),
                                   units: provider.getAmountTextFieldsController());
