@@ -108,6 +108,39 @@ class CoreUtils {
         });
   }
 
+  static Future<bool> showDisclosure(
+      BuildContext context) async{
+     bool res = await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog.adaptive(
+            title: Text(
+              S.of(context).disclosures,
+              style: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold),
+            ),
+            content: Image.asset('assets/images/location-2.png'),
+            actions: [
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colours.primaryColor,
+                      foregroundColor: Colors.white),
+                  onPressed: ()=>Navigator.pop(context,true),
+                  child: Text(
+                    S.of(context).disclosures_agree,
+                    style: const TextStyle(color: Colors.white),
+                  )),
+              TextButton(
+                  onPressed: ()=>Navigator.pop(context,false),
+                  child: Text(
+                S.of(context).disclosures_decline
+              ))
+            ],
+          );
+        });
+     return res;
+  }
+
   static Future<int?> showInvoiceConfirmationDialog(
       BuildContext context, String text) async{
     return showDialog<int?>(

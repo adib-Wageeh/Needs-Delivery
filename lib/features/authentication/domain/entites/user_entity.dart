@@ -11,6 +11,8 @@ class UserEntity{
   final String? token;
   @JsonKey(name: 'merchant_image')
   final String? image;
+  final String? lat;
+  final String? long;
 
   const UserEntity({
     required this.id,
@@ -20,6 +22,8 @@ class UserEntity{
     required this.name,
     this.email,
     required this.mobile,
+    this.long,
+    this.lat
   });
 
 }

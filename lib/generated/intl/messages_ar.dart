@@ -32,6 +32,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "currency": MessageLookupByLibrary.simpleMessage("ج"),
         "damaged_button": MessageLookupByLibrary.simpleMessage("منتجات تالفة"),
         "date_title": MessageLookupByLibrary.simpleMessage("التاريخ"),
+        "disclosures": MessageLookupByLibrary.simpleMessage(
+            "سيستخدم تطبيق Needs Delivery الموقع في الخلفية لتتبع موقعك تلقائيًا"),
+        "disclosures_agree": MessageLookupByLibrary.simpleMessage("أوافق"),
+        "disclosures_decline": MessageLookupByLibrary.simpleMessage("أرفض"),
         "empty_field": MessageLookupByLibrary.simpleMessage("مطلوب"),
         "empty_field_fem": MessageLookupByLibrary.simpleMessage("مطلوبة"),
         "empty_password_text_field_error":

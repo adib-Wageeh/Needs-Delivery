@@ -81,6 +81,9 @@
   "reason_error": "Enter Your Reason",
   "run_sheet_id": "Runsheet No. # ",
   "invoice_id": "Invoice No. # ",
+  "disclosures": "Needs Delivery will use location in the background to automatically track your position",
+  "disclosures_agree": "Agree",
+  "disclosures_decline": "Decline",
 
   "profile_sign_out": "LogOut",
   "edit_profile_title":"Edit Profile",

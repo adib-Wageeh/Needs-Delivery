@@ -33,6 +33,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "damaged_button":
             MessageLookupByLibrary.simpleMessage("Damaged products"),
         "date_title": MessageLookupByLibrary.simpleMessage("Date"),
+        "disclosures": MessageLookupByLibrary.simpleMessage(
+            "Needs Delivery will use location in the background to automatically track your position"),
+        "disclosures_agree": MessageLookupByLibrary.simpleMessage("Agree"),
+        "disclosures_decline": MessageLookupByLibrary.simpleMessage("Decline"),
         "edit_profile_title":
             MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "empty_field": MessageLookupByLibrary.simpleMessage("is required"),

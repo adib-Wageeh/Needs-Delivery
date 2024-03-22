@@ -81,6 +81,9 @@
   "reason_error": "برجاء أدخال السبب",
   "run_sheet_id": "قائمة تشغيل رقم ",
   "invoice_id": "فاتورة رقم",
+  "disclosures": "سيستخدم تطبيق Needs Delivery الموقع في الخلفية لتتبع موقعك تلقائيًا",
+  "disclosures_agree": "أوافق",
+  "disclosures_decline": "أرفض",
 
   "profile_sign_out": "تسجيل الخروج",
   "edit_profile_old_password_empty":"كلمه المرور القديمه غير صحيحة",

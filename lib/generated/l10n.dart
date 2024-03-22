@@ -840,6 +840,36 @@ class S {
     );
   }
 
+  /// `Needs Delivery will use location in the background to automatically track your position`
+  String get disclosures {
+    return Intl.message(
+      'Needs Delivery will use location in the background to automatically track your position',
+      name: 'disclosures',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Agree`
+  String get disclosures_agree {
+    return Intl.message(
+      'Agree',
+      name: 'disclosures_agree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decline`
+  String get disclosures_decline {
+    return Intl.message(
+      'Decline',
+      name: 'disclosures_decline',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `LogOut`
   String get profile_sign_out {
     return Intl.message(

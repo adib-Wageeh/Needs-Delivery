@@ -9,7 +9,7 @@ class UserModel extends UserEntity{
 
   UserModel({
     required super.id,required super.name,super.email, required super.mobile,
-    super.token,required super.lastName,super.image});
+    super.token,required super.lastName,super.image,super.lat,super.long});
 
 
   factory UserModel.fromJson(DataMap json) => _$UserModelFromJson(json);
@@ -25,6 +25,8 @@ class UserModel extends UserEntity{
     String? phone,
     String? lastName,
     String? token,
+    String? lat,
+    String? long,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -34,6 +36,8 @@ class UserModel extends UserEntity{
       mobile: phone ?? mobile,
       lastName: lastName ?? this.lastName,
       token: token ?? this.token,
+      lat: lat ?? this.lat,
+      long: long ?? this.long
     );
   }
 

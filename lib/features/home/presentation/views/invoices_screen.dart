@@ -135,15 +135,27 @@ class _RunSheetInvoicesScreenState extends State<RunSheetInvoicesScreen> {
                                 ? Colors.red
                                 : Colors.green,
                             padding: const EdgeInsets.symmetric(horizontal: 4)),
-                        onPressed: () {
+                        onPressed: () async{
                           if (provider.getButtonPressedState) {
                             Provider.of<LocationProvider>(context,
                                     listen: false)
                                 .updateButtonPressedStatus = false;
                             onStop();
                           } else {
-                            checkGpsService(context);
-                            _onStart();
+
+                            if(Provider.of<UserProvider>(context,listen: false).user!.lat == null) {
+                              bool res = await CoreUtils.showDisclosure(
+                                  context);
+                              if (res) {
+                                checkGpsService(context);
+                                _onStart();
+                              } else {
+
+                              }
+                            }else{
+                              checkGpsService(context);
+                              _onStart();
+                            }
                           }
                         },
                         child: Text(
