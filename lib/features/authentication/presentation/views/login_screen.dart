@@ -192,20 +192,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 8.h,
                   ),
                   TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.deepOrange,
-                    ),
-                    child: AutoSizeText(
-                        minFontSize: 12,
-                        maxFontSize: 24,
-                        S.of(context).login_forgetPassword,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          color: Colors.white
-                        )),
-                  ),
-                  TextButton(
                     onPressed: () {
                       GoRouter.of(context).pushReplacementNamed(AppRouteConstants.signUpRouteName);
                     },
